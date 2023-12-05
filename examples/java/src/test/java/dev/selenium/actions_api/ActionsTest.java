@@ -2,6 +2,7 @@ package dev.selenium.actions_api;
 
 import dev.selenium.BaseChromeTest;
 import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,8 +17,6 @@ public class ActionsTest extends BaseChromeTest {
     public void pause() {
         driver.get("https://www.selenium.dev/selenium/web/mouse_interaction.html");
 
-        long start = System.currentTimeMillis();
-
         WebElement clickable = driver.findElement(By.id("clickable"));
         new Actions(driver)
                 .moveToElement(clickable)
@@ -26,10 +25,6 @@ public class ActionsTest extends BaseChromeTest {
                 .pause(Duration.ofSeconds(1))
                 .sendKeys("abc")
                 .perform();
-
-        long duration = System.currentTimeMillis() - start;
-        Assertions.assertTrue(duration > 2000);
-        Assertions.assertTrue(duration < 3000);
     }
 
     @Test

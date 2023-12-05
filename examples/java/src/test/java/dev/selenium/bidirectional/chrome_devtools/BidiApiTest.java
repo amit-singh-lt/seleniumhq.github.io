@@ -4,6 +4,7 @@ import static org.openqa.selenium.devtools.events.CdpEventTypes.consoleEvent;
 import static org.openqa.selenium.devtools.events.CdpEventTypes.domMutation;
 
 import com.google.common.net.MediaType;
+import dev.selenium.BaseChromeTest;
 import dev.selenium.BaseTest;
 import java.net.*;
 import java.time.Duration;
@@ -23,17 +24,19 @@ import org.openqa.selenium.logging.HasLogEvents;
 import org.openqa.selenium.remote.http.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+//public class BidiApiTest extends BaseChromeTest {
 public class BidiApiTest extends BaseTest {
 
   @BeforeEach
   public void createSession() {
     driver = new ChromeDriver();
     wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
   }
 
   @Test
   public void basicAuthentication() {
-    Predicate<URI> uriPredicate = uri -> uri.toString().contains("herokuapp.com");
+    Predicate<URI> uriPredicate = uri -> uri.toString().contains("herokuapp.com/basic_auth");
     Supplier<Credentials> authentication = UsernameAndPassword.of("admin", "admin");
 
     ((HasAuthentication) driver).register(uriPredicate, authentication);

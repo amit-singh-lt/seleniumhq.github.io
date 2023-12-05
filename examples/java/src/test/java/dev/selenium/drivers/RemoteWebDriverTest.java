@@ -3,6 +3,7 @@ package dev.selenium.drivers;
 import dev.selenium.BaseTest;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,8 +29,9 @@ public class RemoteWebDriverTest extends BaseTest {
   URL gridUrl;
 
   @BeforeEach
-  public void startGrid() {
-    gridUrl = startStandaloneGrid();
+  public void startGrid() throws MalformedURLException {
+    gridUrl = new URL("https://ml_smoke:Pi86PKYcFQ9wvjV2kX7AdervH3m0TupYrFYuzJsJ8XYVW8o3Ur@stage-hub.lambdatestinternal.com/wd/hub");
+//      startStandaloneGrid();
   }
 
   @Test

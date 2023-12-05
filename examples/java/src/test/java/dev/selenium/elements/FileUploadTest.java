@@ -11,6 +11,13 @@ public class FileUploadTest extends BaseChromeTest {
 
   @Test
   public void fileUploadTest() {
+    driver.get("https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-zip-file.zip");
+
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException ignored) {
+    }
+
     driver.get("https://the-internet.herokuapp.com/upload");
     File uploadFile = new File("src/test/resources/selenium-snapshot.png");
 
